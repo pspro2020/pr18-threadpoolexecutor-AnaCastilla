@@ -20,5 +20,7 @@ public class MainFixedThreadPool {
         } catch (InterruptedException e) {
             return;
         }
+
+        System.out.println("FixedThreadPool ha usado " + fixedThreadPoolExecutor.getLargestPoolSize() + " hilos");
     }
 }

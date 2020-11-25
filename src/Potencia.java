@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 public class Potencia implements Runnable {
 
     private final int number;
-    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("mm:ss:ms");
 
     Potencia(int number) {
         this.number = number;

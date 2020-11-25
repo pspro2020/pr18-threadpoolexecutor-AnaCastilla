@@ -6,9 +6,10 @@ import java.util.concurrent.TimeUnit;
 
 public class FixedThreadPoolExecutor {
 
+    private final int availableProcessors = Runtime.getRuntime().availableProcessors();
     private final ThreadPoolExecutor fixedThreadPool =
-            (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
-    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+            (ThreadPoolExecutor) Executors.newFixedThreadPool(availableProcessors);
+    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("mm:ss:ms");
 
     void execute(Potencia potencia) {
         try {
@@ -41,5 +42,9 @@ public class FixedThreadPoolExecutor {
             System.out.printf("%s - %s - Await termination timeout. Completed: %d\n",
                     LocalTime.now().format(dtf), Thread.currentThread().getName(), fixedThreadPool.getCompletedTaskCount());
         }
+    }
+
+    public int getLargestPoolSize() {
+        return fixedThreadPool.getLargestPoolSize();
     }
 }

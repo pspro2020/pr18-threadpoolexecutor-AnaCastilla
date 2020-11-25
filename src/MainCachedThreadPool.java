@@ -20,5 +20,7 @@ public class MainCachedThreadPool {
         } catch (InterruptedException e) {
             return;
         }
+
+        System.out.println("CatchedThreadPool ha usado " + cachedThreadPoolExecutor.getLargestPoolSize() + " hilos");
     }
 }

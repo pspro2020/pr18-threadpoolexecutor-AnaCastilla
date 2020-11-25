@@ -8,7 +8,7 @@ public class CachedThreadPoolExecutor {
 
     private final ThreadPoolExecutor cachedThreadPool =
             (ThreadPoolExecutor) Executors.newCachedThreadPool();
-    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("mm:ss:ms");
 
     void execute(Potencia potencia) {
         try {
@@ -41,5 +41,9 @@ public class CachedThreadPoolExecutor {
             System.out.printf("%s - %s - Await termination timeout. Completed: %d\n",
                     LocalTime.now().format(dtf), Thread.currentThread().getName(), cachedThreadPool.getCompletedTaskCount());
         }
+    }
+
+    public int getLargestPoolSize() {
+        return cachedThreadPool.getLargestPoolSize();
     }
 }
